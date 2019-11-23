@@ -32,16 +32,16 @@ module.exports = {
         machinepack.checkPassword({passwordAttempt: oldpwd,encryptedPassword:  user[0]['password']})
         .exec({
         error: function (err){
-          console.log("There is Error");
+          console.log("There is Error in checking password");
           console.log(err);
         },
         incorrect: function (){
-          console.log("Incorrect password")
+          console.log("Incorrect password provided")
         },
         success: function (){
           req.session.me = user[0]['id'];
          //res.locals.me = _.clone(req.session.me);
-          console.log("loggin with Id of "+req.session.me);
+          console.log("logged in with Id of "+req.session.me);
         }
       });
       }
