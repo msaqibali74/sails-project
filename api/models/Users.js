@@ -14,6 +14,7 @@ module.exports = {
         username: {
             type: "string",
             required: true,
+            unique: true,
         },
         name: {
             type: "string",
