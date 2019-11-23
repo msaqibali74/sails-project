@@ -1,5 +1,8 @@
 module.exports = {
-  attributes: {
+  
+    // please add comments in each model
+    // about the working of model
+    attributes: {
     
     username:{
       type:"string",
