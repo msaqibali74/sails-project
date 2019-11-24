@@ -7,7 +7,7 @@ module.exports = {
     var olddate=new Date();
     var newdate=new Date(olddate.getTime()+60000);
     req.session.cookie.expires=newdate;
-    req.session.authenticated=true;
+    this.req.session.authenticated=true;
     //console.log(req.session);
   },
   
