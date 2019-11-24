@@ -7,8 +7,8 @@ module.exports = {
     var olddate=new Date();
     var newdate=new Date(olddate.getTime()+60000);
     req.session.cookie.expires=newdate;
-    this.req.session.authenticated=true;
-    //console.log(req.session);
+    req.session.authenticated=true;
+    console.log(req.session);
   },
   
   loginprocess:async function(req,res)
