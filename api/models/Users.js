@@ -4,12 +4,6 @@ module.exports = {
     // about the working of model
     attributes: {
 
-    
-        id: {
-            type: "interger",
-            required: true,
-            unique: true,
-        },
 
         username: {
             type: "string",
