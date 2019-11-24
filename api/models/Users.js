@@ -27,7 +27,6 @@ module.exports = {
             type: "string",
             minLength: 6
         },
->>>>>>> 40f04cca9e449e3bd2d4b42b34ce60b788e1c029
     },
     customToJSON: function ()
     {
