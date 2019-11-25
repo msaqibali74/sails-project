@@ -4,15 +4,44 @@ module.exports = {
   {
     
     res.view('users/login',{layout: 'layouts/loginlayout',title: 'Login'});
+    /*
     var olddate=new Date();
     var newdate=new Date(olddate.getTime()+60000);
     req.session.cookie.expires=newdate;
-    req.session.authenticated=true;
-    console.log(req.session);
+    this.req.session.userId=true;
+    console.log(req.session);*/
   },
   
   loginprocess:async function(req,res)
   {
+    var userRecord = await Users.findOne({
+      email: req.param('email').toLowerCase(),
+    }); 
+    if(!userRecord) {
+      console.log("User Doesnt Exists");
+    }
+    //await sails.helpers.passwords.checkPassword(req.param('email'), userRecord.password)
+    /*const machinepack=require('machinepack-passwords');
+    machinepack.checkPassword(req.param('email'), userRecord.password)
+    .intercept('incorrect', 'badCombo');
+    this.req.session.userId = userRecord.id;*/
+    const bcrypt = require('bcrypt');
+    bcrypt.compare(req.param('password'), userRecord.password, function(err, res) {
+      if (err){
+        // handle error
+      }
+      if (res){
+        // Send JWT
+      } else {
+        // response is OutgoingMessage object that server response http request
+        return response.json({success: false, message: 'passwords do not match'});
+      }
+    });
+    /*
+    .intercept('incorrect', 'badCombo');
+    this.req.session.userId = userRecord.id;
+    console.log("logged in with Id of "+req.session.userId);*/
+    /*
     Users.find(
       {where: {email:req.param('email')},
       select: ['email','password']
@@ -39,13 +68,12 @@ module.exports = {
           console.log("Incorrect password provided")
         },
         success: function (){
-          req.session.me = user[0]['id'];
-         //res.locals.me = _.clone(req.session.me);
+        
           console.log("logged in with Id of "+req.session.me);
         }
       });
       }
-    });
+    });*/
   },
   register: function(req,res)
   {
