@@ -1,15 +1,7 @@
 module.exports = {
-
   login: function(req, res)
   {
-    
     res.view('users/login',{layout: 'layouts/loginlayout',title: 'Login'});
-    /*
-    var olddate=new Date();
-    var newdate=new Date(olddate.getTime()+60000);
-    req.session.cookie.expires=newdate;
-    this.req.session.userId=true;
-    console.log(req.session);*/
   },
   
   loginprocess:async function(req,res)
@@ -20,45 +12,8 @@ module.exports = {
     if(!userRecord) {
       console.log("User Doesnt Exists");
     }
-    //await sails.helpers.passwords.checkPassword(req.param('email'), userRecord.password)
-    /*const machinepack=require('machinepack-passwords');
-    machinepack.checkPassword(req.param('email'), userRecord.password)
-    .intercept('incorrect', 'badCombo');
-    this.req.session.userId = userRecord.id;*/
-    const bcrypt = require('bcrypt');
-    bcrypt.compare(req.param('password'), userRecord.password, function(err, res) {
-      if (err){
-        // handle error
-      }
-      if (res){
-        // Send JWT
-      } else {
-        // response is OutgoingMessage object that server response http request
-        return response.json({success: false, message: 'passwords do not match'});
-      }
-    });
-    /*
-    .intercept('incorrect', 'badCombo');
-    this.req.session.userId = userRecord.id;
-    console.log("logged in with Id of "+req.session.userId);*/
-    /*
-    Users.find(
-      {where: {email:req.param('email')},
-      select: ['email','password']
-  }, function foundUser(err, user) {
-      if (err)
-      {
-         console.log(err)
-      }
-      if (user=="")
-      {
-        console.log("User not Found at all");
-      }
-      else if(user!="")
-      {
-        var oldpwd=req.param('password')
-        const machinepack=require('machinepack-passwords');
-        machinepack.checkPassword({passwordAttempt: oldpwd,encryptedPassword:  user[0]['password']})
+    const machinepack=require('machinepack-passwords');
+        machinepack.checkPassword({passwordAttempt: req.param('password'),encryptedPassword:  userRecord['password']})
         .exec({
         error: function (err){
           console.log("There is Error in checking password");
@@ -68,12 +23,10 @@ module.exports = {
           console.log("Incorrect password provided")
         },
         success: function (){
-        
-          console.log("logged in with Id of "+req.session.me);
+          req.session.userId = userRecord['id'];
+          res.json("User Logged in");
         }
       });
-      }
-    });*/
   },
   register: function(req,res)
   {
@@ -82,7 +35,7 @@ module.exports = {
   },
   create:async function(req,res,next)
   {
-    var ErrorMessage="";
+     var ErrorMessage="";
     var result = await Users.find({
       select: [ 'email','username'],
       where: {or:[
