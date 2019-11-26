@@ -24,6 +24,9 @@ module.exports = {
         },
         success: function (){
           req.session.userId = userRecord['id'];
+          req.session.userName = userRecord['username'];
+          req.session.Name = userRecord['name'];
+          req.session.title = userRecord['title'];
           res.json("User Logged in");
         }
       });
