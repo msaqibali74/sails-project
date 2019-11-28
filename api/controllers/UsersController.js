@@ -1,4 +1,12 @@
 module.exports = {
+  logout:function(req,res)
+  {
+    console.log("Logout !!");
+    req.session.destroy(function (err)
+    {
+      res.redirect('/users/login');
+    });
+  },
   login: function(req, res)
   {
     res.view('users/login',{layout: 'layouts/loginlayout',title: 'Login'});
@@ -27,14 +35,15 @@ module.exports = {
           req.session.userName = userRecord['username'];
           req.session.Name = userRecord['name'];
           req.session.title = userRecord['title'];
-          res.json("User Logged in");
+          //res.redirect('/contacts/index');
+          res.json("Redirect");
         }
       });
   },
   register: function(req,res)
   {
     res.view('users/register',{layout: 'layouts/loginlayout',title:'Register'});
-    console.log(req.session.authenticated);
+    //console.log(req.session.authenticated);
   },
   create:async function(req,res,next)
   {

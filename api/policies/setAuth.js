@@ -7,6 +7,6 @@ module.exports=function(req,res,next)
     }
     else
     {
-        res.json("Not authenticated");
+        res.redirect("../users/login");
     }
 }

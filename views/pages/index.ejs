@@ -447,7 +447,7 @@ var data =  $('#contactlistdata').serialize();
                             </li>
                         </ul>
                         <div class="pad5A button-pane button-pane-alt text-center">
-                            <a href="#" class="btn display-block font-normal btn-danger">
+                            <a href="../Users/logout" class="btn display-block font-normal btn-danger">
                                 <i class="glyph-icon icon-power-off"></i>
                                 Logout
                             </a>
@@ -824,8 +824,8 @@ var data =  $('#contactlistdata').serialize();
     </script>
     
     <div id="page-title">
-        <h2>Fixed data tables</h2>
-        <p>Tables with a lot of advanced, easy to use features and options.</p>
+        <h2><%=req.session.Name%></h2>
+        <p>Thanks to be part of our System</p>
         <div id="theme-options" class="admin-options">
         <a href="javascript:void(0);" class="btn btn-primary theme-switcher tooltip-button" data-placement="left" title="Color schemes and layout options">
             <i class="glyph-icon icon-linecons-cog icon-spin"></i>
@@ -956,6 +956,7 @@ var data =  $('#contactlistdata').serialize();
             <th>Name</th>
             <th>Number</th>
             <th>E-mail</th>
+            <th>Edit/Delete</th>
         </tr>
         </thead>
         <tbody id="contactdata">
@@ -964,6 +965,8 @@ var data =  $('#contactlistdata').serialize();
                     <td><%= contact.name %></td>
                     <td><%= contact.number %></td>
                     <td><%= contact.email %></td>
+                    <td><button class="btn ra-100 btn-info">Edit</button> 
+                     <button class="btn ra-100 btn-danger">Delete</button></td>
                 </tr>
                 <% }); %>
         </tbody>

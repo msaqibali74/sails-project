@@ -10,7 +10,11 @@ var datas =  $('#loginform').serialize();
         xhr.setRequestHeader('Csrf-Token', token);
     },
     success: function(response){
-      $("#ermsg").html(response);
+     // $("#ermsg").html(response);
+     if(response=="Redirect")
+      {
+        $(location).attr('href', '/Contacts/index');
+      }
     }
   });
   return false;
@@ -28,6 +32,7 @@ var data =  $('#registerform').serialize();
     },
     success: function(response){
       $("#ermsg").html(response);
+      
     },
     error: function(response)
     {
