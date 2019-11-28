@@ -4,7 +4,7 @@ module.exports = {
         where: {owner:req.param('userid')},
         select: ['name','number', 'email']
       });
-     res.view('pages/index',{cons: contactsListing});
+     res.view('pages/index',{cons: contactsListing}); 
     }
 };
 
