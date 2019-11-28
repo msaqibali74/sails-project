@@ -1,4 +1,4 @@
-<script>
+<!--<script>
  $(document).ready(function() { 
     
 var token =  $('input[name="_csrf"]').attr('value');
@@ -11,8 +11,8 @@ var data =  $('#contactlistdata').serialize();
         xhr.setRequestHeader('Csrf-Token', token);
     },
     success: function(response){
-       // alert(response);
-      $("#contactdata").html(response);
+    var data="<tr><td>Saqib</td><td>Saqib</td><td>Saqib</td></tr><tr><td>Saqib</td><td>Saqib</td><td>Saqib</td></tr>";
+    $("#contactdata").html  (data);
     },
     error: function(response)
     {
@@ -21,7 +21,8 @@ var data =  $('#contactlistdata').serialize();
   });
   return false;
 });
-</script>
+</script>-->
+    <%- partial('../partial/session.ejs') %>
     <div id="sb-site" >
         <div class="sb-slidebar bg-black sb-left sb-style-overlay">
         <div class="scrollable-content scrollable-slim-sidebar">
@@ -940,9 +941,10 @@ var data =  $('#contactlistdata').serialize();
     
     <div class="panel">
     <div class="panel-body">
+        <!--
     <h3 class="title-hero">
         Datatables fixed header
-    </h3>
+    </h3>-->
     <div class="example-box-wrapper">
     <form id="contactlistdata">
         <input type="hidden" name="_csrf"  value="<%= _csrf %>"/>
@@ -956,11 +958,16 @@ var data =  $('#contactlistdata').serialize();
             <th>E-mail</th>
         </tr>
         </thead>
-        
         <tbody id="contactdata">
-            
+                  <%  cons.forEach(function(contact) { %>
+                <tr>
+                    <td><%= contact.name %></td>
+                    <td><%= contact.number %></td>
+                    <td><%= contact.email %></td>
+                </tr>
+                <% }); %>
         </tbody>
-        </table>
+    </table>
     </div>
     </div>
     </div>

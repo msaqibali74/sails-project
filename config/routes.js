@@ -19,7 +19,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+  //'/': { view: 'pages/index' },
   //'/users':{view:'pages/noaccess'},
   '/home': {
     view: 'pages/index',
