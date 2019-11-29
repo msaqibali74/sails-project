@@ -12,6 +12,7 @@
     "connect-mongo": "1.1.0",
     "csrf": "^3.1.0",
     "express-jwt": "^5.3.1",
+    "froala-editor": "^3.0.6",
     "grunt": "1.0.4",
     "jsonwebtoken": "^8.5.1",
     "machinepack-passwords": "^2.3.0",

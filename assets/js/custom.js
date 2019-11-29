@@ -41,3 +41,10 @@ var data =  $('#registerform').serialize();
   });
   return false;
 }
+function savepage()
+{
+  
+var token =  $('input[name="_csrf"]').attr('value');
+var data =  $('#pageform').serialize();
+alert(data);
+}
