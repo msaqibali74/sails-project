@@ -3,8 +3,6 @@ module.exports = {
     // please add comments in each model
     // about the working of model
     attributes: {
-
-
         username: {
             type: "string",
             required: true,
@@ -34,6 +32,10 @@ module.exports = {
     },
     Contact: {
         collection: 'contacts',
+        via: 'owner'
+    },
+    Page:{
+        collection: 'pages',
         via: 'owner'
     },
     beforeCreate: function (values, cb) {

@@ -43,7 +43,6 @@ module.exports = {
   register: function(req,res)
   {
     res.view('users/register',{layout: 'layouts/loginlayout',title:'Register'});
-    //console.log(req.session.authenticated);
   },
   create:async function(req,res,next)
   {
