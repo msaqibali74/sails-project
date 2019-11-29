@@ -22,8 +22,10 @@ module.exports = {
     });
     var myJSON = JSON.stringify(result);
     var myj = JSON.parse(myJSON);
-
-    
+    if(req.param('owner')=="")
+    {
+      ErrorMessage+="Error in saving page no associated owner found Maybe you are not authorized to create page try to login and create page again<br>";
+    }
     myj.forEach(function(currentValue, index, arr)
     {
       console.log(arr[index]['email']);
@@ -37,6 +39,11 @@ module.exports = {
       var CreatedPage = await Pages.create(params).fetch();
       var successmsg='<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>Page created with ID '+CreatedPage.id+' </div>';
       res.json(successmsg)
+    }
+    else
+    {
+      var myResponse='<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>'+ErrorMessage+'</div>';
+      res.json(myResponse);
     }
   },
 };
