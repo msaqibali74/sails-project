@@ -11,26 +11,26 @@ module.exports = {
     name:{
       type:"string",
       required:true,
-      unique:true
+      unique:true,
     },
     title:{
-      type:"String",
+      type:"string",
       required:true,
     },
     displaytop:{
-      type: 'boolean', 
+      type: 'string', 
     },
     displaydown:{
-      type: 'boolean', 
+      type: 'string', 
     },
     displayleft:{
-      type: 'boolean', 
+      type: 'string', 
     },
     displayright:{
-      type: 'boolean', 
+      type: 'string', 
     },
     order:{
-      type: 'boolean', 
+      type: 'string', 
     },
     content:{
       type: "string",

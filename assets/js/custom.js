@@ -42,9 +42,24 @@ var data =  $('#registerform').serialize();
   return false;
 }
 function savepage()
-{
-  
-var token =  $('input[name="_csrf"]').attr('value');
-var data =  $('#pageform').serialize();
-alert(data);
+{ 
+  var token =  $('input[name="_csrf"]').attr('value');
+  var data =  $('#pageform').serialize();
+  $.ajax({
+    type: 'post',
+    url: '/pages/createprocess',
+    data: data,
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader('Csrf-Token', token);
+    },
+    success: function(response){
+      $("#ermsg").html(response);
+      
+    },
+    error: function(response)
+    {
+      $("#ermsg").html(response);
+    }
+  });
+  return false;
 }
