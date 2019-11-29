@@ -864,7 +864,10 @@
     </div>
     
 <div class="pad15A">
-        <input type="text"   name="content"/>
+        <div id="editor">
+                <div id='edit' style='margin-top:30px;'>
+                </div>
+              </div>
     </div>
     <input type="hidden" name="owner" value=" <%=req.session.UserId%>" />
     <input type="hidden" value="<%= _csrf %>" name="_csrf"  />
@@ -886,3 +889,11 @@
     </div>
 </div>
     </div>
+    <script>
+            require([
+              'froala-editor',
+              'froala-editor/js/plugins/align.min'
+            ], function(FroalaEditor) {
+              new FroalaEditor('#edit')
+            });
+          </script> 
