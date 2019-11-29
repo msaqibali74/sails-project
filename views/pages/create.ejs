@@ -1,28 +1,32 @@
-<!--<script>
- $(document).ready(function() { 
-    
-var token =  $('input[name="_csrf"]').attr('value');
-var data =  $('#contactlistdata').serialize();
-  $.ajax({
-    type: 'post',
-    url: '/contacts/listing',
-    data: data,
-    beforeSend: function(xhr) {
-        xhr.setRequestHeader('Csrf-Token', token);
-    },
-    success: function(response){
-    var data="<tr><td>Saqib</td><td>Saqib</td><td>Saqib</td></tr><tr><td>Saqib</td><td>Saqib</td><td>Saqib</td></tr>";
-    $("#contactdata").html  (data);
-    },
-    error: function(response)
-    {
-      //$("#contactdata").html(response);
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.css">
+ 
+  <script src="require.js"></script> 
+  <script>
+    require.config({
+      packages: [{
+        name: 'froala-editor',
+        main: 'js/froala_editor.min'
+      }],
+      paths: {
+        // Change this to your server if you do not wish to use our CDN.
+        'froala-editor': 'https://cdn.jsdelivr.net/npm/froala-editor@latest'
+      }
+    });
+  </script> 
+ 
+  <style>
+    body {
+      text-align: center;
     }
-  });
-  return false;
-});
-</script>-->
-
+    div#editor {
+      width: 81%;
+      margin: auto;
+      text-align: left;
+    }
+    .ss {
+      background-color: red;
+    }
+  </style> 
 <script type="text/javascript" src="../widgets/input-switch/inputswitch.js"></script>
 <script type="text/javascript">
     /* Input switch */
@@ -793,30 +797,13 @@ var data =  $('#contactlistdata').serialize();
         <a class="header-btn" id="logout-btn" href="lockscreen-3.html" title="Lockscreen page example">
             <i class="glyph-icon icon-linecons-lock"></i>
         </a>
-
     </div><!-- #header-nav-right -->
-
 </div>
-
 <%- partial('../partial/left-menu.ejs') %>
 <div id="page-content-wrapper">
     <div id="page-content">
         
             <div class="container">
-            
-
-<!-- Bootstrap Summernote WYSIWYG editor -->
-
-<!--<link rel="stylesheet" type="text/css" href="../../assets/widgets/summernote-wysiwyg/summernote-wysiwyg.css">-->
-<!--<script type="text/javascript" src="../widgets/summernote-wysiwyg/summernote-wysiwyg.js"></script>
-<script type="text/javascript">
-$(function() { "use strict";
-$('.wysiwyg-editor').summernote({
-    height: 350
-});
-});
-</script>-->
-
 <div class="row mailbox-wrapper">
 
 <div class="col-md-12">
