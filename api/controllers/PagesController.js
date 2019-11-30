@@ -1,9 +1,3 @@
-/**
- * PagesController
- *
- * @description :: Server-side actions for handling incoming requests.
- * @help        :: See https://sailsjs.com/docs/concepts/actions
- */
 
 module.exports = {
   create:async function(req,res)
@@ -12,6 +6,30 @@ module.exports = {
   },
   createprocess:async function(req,res)
   { 
+
+    /**iMage upload code**/
+    /*var fs = require('fs');
+    console.log(req.files);
+
+fs.readFile(req.files.upload.path, function (err, data) {
+  var newPath = 'assets/files/' + req.files.upload.content;
+    fs.writeFile(newPath, data, function (err) {
+    if (err) res.view({err: err});
+      html = "";
+      html += "<script type='text/javascript'>";
+      html += "    var funcNum = " + req.query.CKEditorFuncNum + ";";
+      html += "    var url     = \"/files/" + req.files.upload.content + "\";";
+      html += "    var message = \"Uploaded file successfully\";";
+      html += "";
+      html += "    window.parent.CKEDITOR.tools.callFunction(funcNum, url, message);";
+      html += "</script>";
+
+      res.send(html);
+  });
+
+});*/
+    /**iMage upload code**/
+
     var params = req.allParams();
     var ErrorMessage="";
     if(req.param('name')=="")
