@@ -1,7 +1,5 @@
 <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
-<script type="text/javascript" >
-    CKEDITOR.replace('#pagecontent');
-</script>
+
 <script type="text/javascript" src="../widgets/input-switch/inputswitch.js"></script>
 <script type="text/javascript">
     $(function() { "use strict";
@@ -37,7 +35,7 @@
     <div class="divider"></div>
     <div id="ermsg">
     </div>
-        <form class="form-horizontal mrg15T" role="form" id="pageform"  enctype="multipart/form-data">
+        <form class="form-horizontal mrg15T" role="form" method="POST" action="../pages/createprocess" id="pageform"  enctype="multipart/form-data">
             <div class="form-group row">
                 <label for="name" class="col-sm-2 control-label">Name:</label>
                 <div class="col-sm-8">
@@ -81,17 +79,25 @@
                 <div class="col-sm-8">
                     <textarea class="form-control" id="metadescription"></textarea>
                 </div>
+
             </div>
             <div class="pad15A">
                 <textarea id="pagecontent" name="content"></textarea>
+                <script type="text/javascript" >
+                    CKEDITOR.replace('pagecontent');
+                </script>
             </div>
             <input type="hidden" name="owner" value="<%= req.session.userId%>" />
             <input type="hidden" value="<%= _csrf %>" name="_csrf"  />
+            <div class="button-pane">
+                <input type="submit" class="btn btn-info" value="Save Page" />
+                <button class="btn btn-link font-gray-dark">Cancel</button>
+            </div>
         </form>
-        <div class="button-pane">
+        <!--<div class="button-pane">
             <button class="btn btn-info" onclick="savepage();">Save Page</button>
             <button class="btn btn-link font-gray-dark">Cancel</button>
-        </div>
+        </div>-->
 </div>
 </div>
 </div>

@@ -13,7 +13,7 @@ var datas =  $('#loginform').serialize();
      // $("#ermsg").html(response);
      if(response=="Redirect")
       {
-        $(location).attr('href', '/Contacts/index');
+        $(location).attr('href', '/pages/create');
       }
     }
   });
