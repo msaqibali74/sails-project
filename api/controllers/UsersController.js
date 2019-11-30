@@ -11,7 +11,6 @@ module.exports = {
   {
     res.view('users/login',{layout: 'layouts/loginlayout',title: 'Login'});
   },
-  
   loginprocess:async function(req,res)
   {
     var userRecord = await Users.findOne({

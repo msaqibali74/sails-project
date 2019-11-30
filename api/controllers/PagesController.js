@@ -14,6 +14,10 @@ module.exports = {
   { 
     var params = req.allParams();
     var ErrorMessage="";
+    if(req.param('name')=="")
+    {
+      ErrorMessage+="Name of page can't be Empty";
+    }
     var result = await Pages.find({
       select: ['name'],
       where: {or:[

@@ -1,32 +1,9 @@
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.css">
- 
-  <script src="require.js"></script> 
-  <script>
-    require.config({
-      packages: [{
-        name: 'froala-editor',
-        main: 'js/froala_editor.min'
-      }],
-      paths: {
-        'froala-editor': 'https://cdn.jsdelivr.net/npm/froala-editor@latest'
-      }
-    });
-  </script> 
- 
-  <style>
-    div#editor {
-      width: 81%;
-      margin: auto; 
-      text-align: left;
-    }
-    .ss {
-      background-color: red;
-    }
-  </style> 
+<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+<script type="text/javascript" >
+    CKEDITOR.replace('#pagecontent');
+</script>
 <script type="text/javascript" src="../widgets/input-switch/inputswitch.js"></script>
 <script type="text/javascript">
-    /* Input switch */
-
     $(function() { "use strict";
         $('.input-switch').bootstrapSwitch();
     });
@@ -60,7 +37,7 @@
     <div class="divider"></div>
     <div id="ermsg">
     </div>
-        <form class="form-horizontal mrg15T" role="form" id="pageform">
+        <form class="form-horizontal mrg15T" role="form" id="pageform"  enctype="multipart/form-data">
             <div class="form-group row">
                 <label for="name" class="col-sm-2 control-label">Name:</label>
                 <div class="col-sm-8">
@@ -105,13 +82,8 @@
                     <textarea class="form-control" id="metadescription"></textarea>
                 </div>
             </div>
-        <div class="pad15A">
-        <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-        <textarea id="pagecontent" name="content"></textarea>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
-        <script>
-            new FroalaEditor('#pagecontent');
-        </script> 
+            <div class="pad15A">
+                <textarea id="pagecontent" name="content"></textarea>
             </div>
             <input type="hidden" name="owner" value="<%= req.session.userId%>" />
             <input type="hidden" value="<%= _csrf %>" name="_csrf"  />
@@ -120,7 +92,6 @@
             <button class="btn btn-info" onclick="savepage();">Save Page</button>
             <button class="btn btn-link font-gray-dark">Cancel</button>
         </div>
-
 </div>
 </div>
 </div>
@@ -131,11 +102,3 @@
     </div>
 </div>
     </div>
-    <script>
-            require([
-              'froala-editor',
-              'froala-editor/js/plugins/align.min'
-            ], function(FroalaEditor) {
-              new FroalaEditor('#edit')
-            });
-          </script> 
