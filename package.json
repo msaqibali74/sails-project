@@ -5,11 +5,11 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "@ckeditor/ckeditor5-adapter-ckfinder": "^15.0.0",
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
     "bcrypt-nodejs": "0.0.3",
-    "ckeditor": "^4.12.1",
     "connect-mongo": "1.1.0",
     "csrf": "^3.1.0",
     "express-jwt": "^5.3.1",
