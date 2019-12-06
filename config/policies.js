@@ -8,7 +8,7 @@
  * https://sailsjs.com/docs/concepts/policies
  */
 
-module.exports.policies = {
+/*module.exports.policies = {
   'ContactsController':
   {
     '*':['setAuth'],
@@ -17,4 +17,4 @@ module.exports.policies = {
   {
     '*':['setAuth'],
   }
-};
+};*/

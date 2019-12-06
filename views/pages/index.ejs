@@ -1,27 +1,4 @@
-<!--<script>
- $(document).ready(function() { 
-    
-var token =  $('input[name="_csrf"]').attr('value');
-var data =  $('#contactlistdata').serialize();
-  $.ajax({
-    type: 'post',
-    url: '/contacts/listing',
-    data: data,
-    beforeSend: function(xhr) {
-        xhr.setRequestHeader('Csrf-Token', token);
-    },
-    success: function(response){
-    var data="<tr><td>Saqib</td><td>Saqib</td><td>Saqib</td></tr><tr><td>Saqib</td><td>Saqib</td><td>Saqib</td></tr>";
-    $("#contactdata").html  (data);
-    },
-    error: function(response)
-    {
-      //$("#contactdata").html(response);
-    }
-  });
-  return false;
-});
-</script>-->
+
     <%- partial('../partial/session.ejs') %>
     <div id="sb-site" >
         <div class="sb-slidebar bg-black sb-left sb-style-overlay">
@@ -956,6 +933,7 @@ var data =  $('#contactlistdata').serialize();
             <th>Name</th>
             <th>Number</th>
             <th>E-mail</th>
+            <th>Owner</th>
             <th>Edit/Delete</th>
         </tr>
         </thead>
@@ -965,6 +943,7 @@ var data =  $('#contactlistdata').serialize();
                     <td><%= contact.name %></td>
                     <td><%= contact.number %></td>
                     <td><%= contact.email %></td>
+                    <td><%= contact.owner.name %></td>
                     <td><button class="btn ra-100 btn-info">Edit </button> 
                      <button class="btn ra-100 btn-danger">Delete</button></td>
                 </tr>
