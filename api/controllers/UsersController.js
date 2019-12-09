@@ -35,6 +35,10 @@ module.exports = {
           req.session.Name = userRecord['name'];
           req.session.title = userRecord['title'];
           //res.redirect('/contacts/index');
+          
+          if (req.param('rememberme') == "on") {
+            req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 30;
+          }
           res.json("Redirect");
         }
       });
