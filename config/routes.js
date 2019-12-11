@@ -28,6 +28,20 @@ module.exports.routes = {
       title:'User'
     }
   },
+  '/reset-password':{
+    view: 'users/reset-password',
+    locals: {
+      layout: 'layouts/loginlayout',
+      title:'Reset Password'
+    }
+  },
+  '/':{
+    view: 'users/login',
+    locals: {
+      layout: 'layouts/loginlayout',
+      title:'Login'
+    }
+  }
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
