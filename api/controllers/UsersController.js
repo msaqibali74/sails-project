@@ -47,6 +47,44 @@ module.exports = {
   {
     res.view('users/register',{layout: 'layouts/loginlayout',title:'Register'});
   },
+  resetpassword:async function(req,res)
+  {
+    var ErrorMessage="";
+    var result = await Users.find({
+      select: [ 'email'],
+      where: {or:[
+          {email:req.param('email')}
+      ]}
+    });
+    if(result=="")
+    {
+      ErrorMessage+="Email Not Registered  <br>";
+    }
+    var myJSON = JSON.stringify(result);
+    var myj = JSON.parse(myJSON);
+    myj.forEach(function(currentValue, index, arr)
+    {
+      //console.log(arr[index]['email']);
+      if(myj[index]['email']==req.param('email'))
+      {
+        //Email send code here
+        ErrorMessage+="Email Already Exits  <br>";
+      }
+    });
+    /*
+    if(ErrorMessage=="")
+    {
+      var params = req.allParams();
+      var createdUser = await Users.create(params).fetch();
+      var successmsg='<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>'+createdUser.id+' Data Entered </div>';
+      res.json(successmsg)
+    }*/
+    if(ErrorMessage!="")
+    {
+      var myResponse='<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>'+ErrorMessage+'</div>';
+      res.json(myResponse);
+    }
+  },
   create:async function(req,res,next)
   {
      var ErrorMessage="";
