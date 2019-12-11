@@ -63,3 +63,24 @@ function savepage()
   });
   return false;
 }
+function reset_password()
+{
+  var token =  $('input[name="_csrf"]').attr('value');
+  var data =  $('#pwdresetfrm').serialize();
+  $.ajax({
+    type: 'post',
+    url: '/users/resetpassword',
+    data: data,
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader('Csrf-Token', token);
+    },
+    success: function(response){
+      $("#ermsg").html(response);
+    },
+    error: function(response)
+    {
+      $("#ermsg").html(response);
+    }
+  });
+  return false;
+}
