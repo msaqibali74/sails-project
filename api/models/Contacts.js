@@ -26,6 +26,9 @@ module.exports = {
     owner:{
       model: 'users',
       required:true,
+    },
+    image:{
+      type:"string",
     }
   },
 
