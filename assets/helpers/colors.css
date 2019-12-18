@@ -14,7 +14,10 @@
 }
 .text-muted,
 .font-gray {
-    color: #c2c2c2 !important;
+    color: black !important;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .text-info,
 .font-gray-dark {

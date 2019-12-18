@@ -11,9 +11,14 @@ var datas =  $('#loginform').serialize();
     },
     success: function(response){
      // $("#ermsg").html(response);
+     //alert(response);
      if(response=="Redirect")
       {
         $(location).attr('href', '/pages/create');
+      }
+      else
+      {
+        $("#ermsg").html(response);
       }
     }
   });
