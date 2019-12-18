@@ -17,25 +17,22 @@ module.exports = {
       email: req.param('email').toLowerCase(),
     }); 
     if(!userRecord) {
-      console.log("User Doesnt Exists");
+      res.json('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>User Doesnt Exists<br></div>');
     }
     const machinepack=require('machinepack-passwords');
         machinepack.checkPassword({passwordAttempt: req.param('password'),encryptedPassword:  userRecord['password']})
         .exec({
         error: function (err){
-          console.log("There is Error in checking password");
-          console.log(err);
+          res.json('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>There is Error in checking password<br></div>');
         },
         incorrect: function (){
-          console.log("Incorrect password provided")
+          res.json('<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>Incorrect password <br></div>');
         },
         success: function (){
           req.session.userId = userRecord['id'];
           req.session.userName = userRecord['username'];
           req.session.Name = userRecord['name'];
           req.session.title = userRecord['title'];
-          //res.redirect('/contacts/index');
-          
           if (req.param('rememberme') == "on") {
             req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 30;
           }
@@ -58,7 +55,7 @@ module.exports = {
     });
     if(result=="")
     {
-      ErrorMessage+="Email Not Registered  <br>";
+      ErrorMessage+="Email Not Registered  <a href='users/register'>Make account</a><br>";
     }
     var myJSON = JSON.stringify(result);
     var myj = JSON.parse(myJSON);
@@ -71,14 +68,6 @@ module.exports = {
         ErrorMessage+="Email Already Exits  <br>";
       }
     });
-    /*
-    if(ErrorMessage=="")
-    {
-      var params = req.allParams();
-      var createdUser = await Users.create(params).fetch();
-      var successmsg='<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>'+createdUser.id+' Data Entered </div>';
-      res.json(successmsg)
-    }*/
     if(ErrorMessage!="")
     {
       var myResponse='<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>'+ErrorMessage+'</div>';
