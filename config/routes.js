@@ -18,9 +18,7 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
-  //'/': { view: 'pages/index' },
-  //'/users':{view:'pages/noaccess'},
+ 
   '/home': {
     view: 'pages/index',
     locals: {
@@ -41,7 +39,14 @@ module.exports.routes = {
       layout: 'layouts/loginlayout',
       title:'Login'
     }
-  }
+  },
+  /*
+  '/contacts':{
+    view:'pages/index',
+    locals:{
+      layout:'layouts/layout',
+    }
+  },*/
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
