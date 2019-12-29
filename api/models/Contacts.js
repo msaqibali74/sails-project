@@ -15,20 +15,18 @@ module.exports = {
     number:{
       type:"string",
       required:true,
-      unique: true,
     },
     email:{
       type:"string",
       required:true,
       isEmail:true,
-      unique: true,
     },
     owner:{
       model: 'users',
       required:true,
     },
     image:{
-      type:"string",
+      type:"json",
     }
   },
 
