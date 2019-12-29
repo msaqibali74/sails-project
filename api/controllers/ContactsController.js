@@ -26,10 +26,34 @@ module.exports = {
      }
      res.json(allres);
     },
+    beforeCreate: function (values, cb) {
+      
+    },
     create:async function(req,res)
-    {
+    { 
+      uploadedfile=[];
       console.log("Hey there");
       var params = req.allParams();
-      var createdContact = await Contacts.create(params).fetch();
+      req.file('avatar').upload(async function (err, uploadedFiles){
+        if (err){
+          return res.serverError(err);
+        }
+        if(uploadedFiles.length === 0){
+          return res.badRequest('No file was uploaded');
+        }
+        else{
+          uploadedfile.push(uploadedFiles[0].fd);
+          filename=uploadedfile.toString();
+          var createdContact = await Contacts.create({
+              name:req.param('name'),
+              number:req.param('number'),
+              email: req.param('email'),
+              owner: req.param('owner'),
+              image:filename
+          })
+          .fetch();
+          res.redirect('../contacts/new');
+        }
+      });
     }
 };
