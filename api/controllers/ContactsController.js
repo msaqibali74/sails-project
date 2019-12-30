@@ -34,7 +34,16 @@ module.exports = {
       uploadedfile=[];
       console.log("Hey there");
       var params = req.allParams();
-      req.file('avatar').upload(async function (err, uploadedFiles){
+      req.file('avatar').upload({
+      dirname: require('path').resolve(sails.config.appPath, 'assets/images'), 
+      maxBytes: 5000000 }
+      ,async function (err, uploadedFiles){
+        var allowExts = ['image/png', 'image/gif', 'image/jpeg'];
+        
+    if (allowExts.indexOf(uploadedFiles[0].type) == -1)
+    {
+      return res.badRequest('File type is not supported!');
+    }
         if (err){
           return res.serverError(err);
         }
